@@ -2,18 +2,17 @@
 import mongoose from 'mongoose';
 import fs from 'fs';
 import path from 'path';
-import v4 from 'uuid';
+import { v4 } from 'uuid';
 
 const mongooseOptions = {
-    promiseLibrary:    global.Promise,
-    poolSize:          3,
-    keepAlive:         30000,
-    connectTimeoutMS:  5000,
-    reconnectTries:    Number.MAX_SAFE_INTEGER,
-    reconnectInterval: 5000,
-    useNewUrlParser:   true,
-    useFindAndModify:  false,
-    useCreateIndex:    true,
+    promiseLibrary:     global.Promise,
+    poolSize:           3,
+    keepAlive:          30000,
+    connectTimeoutMS:   5000,
+    useNewUrlParser:    true,
+    useFindAndModify:   false,
+    useCreateIndex:     true,
+    useUnifiedTopology: true,
 };
 
 fs.readFile(path.resolve('db'), 'utf-8', (error, data) => {
@@ -29,7 +28,7 @@ fs.readFile(path.resolve('db'), 'utf-8', (error, data) => {
     }
 
     const connection = mongoose.connect(
-        `mongodb://workshop.db.lectrum.io:37017/${DB_NAME}`,
+        `mongodb://lab.lectrum.io:37019/${DB_NAME}`,
         mongooseOptions,
     );
 
