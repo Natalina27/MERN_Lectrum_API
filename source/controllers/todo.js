@@ -6,4 +6,10 @@ export class Todo {
             todo: new TodoModel(data),
         };
     }
+
+    async read() {
+        const data = await this.models.todo.read();
+
+        return data;
+    }
 }
