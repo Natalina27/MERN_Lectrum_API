@@ -1,4 +1,4 @@
-import { Todo as TodoModel } from '../models';
+import {Todo as TodoModel} from '../models';
 
 export class Todo {
     constructor(data) {
@@ -8,8 +8,12 @@ export class Todo {
     }
 
     async read() {
-        const data = await this.models.todo.read();
+        return await this.models.todo.read();
+    }
 
-        return data;
+    async create(){
+
+        return await this.models.todo.create();
+
     }
 }

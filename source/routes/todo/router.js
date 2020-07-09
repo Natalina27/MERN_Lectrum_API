@@ -7,5 +7,6 @@ import * as todos from './';
 const route = express.Router();
 
 route.get('/', todos.read);
+route.post('/', todos.create);
 
 export { route as todos };

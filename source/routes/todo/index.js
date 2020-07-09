@@ -17,3 +17,14 @@ export const read =  async(req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+
+export const create = async (req, res) => {
+    try {
+        const todo = new Todo(req.body);
+        const data = await todo.create();
+
+        res.status(201).json({data});
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
