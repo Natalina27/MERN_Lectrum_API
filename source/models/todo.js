@@ -1,5 +1,5 @@
 // Instruments
-import { todo } from '../odm';
+import {todo} from '../odm';
 
 export class Todo {
     constructor(data) {
@@ -24,8 +24,12 @@ export class Todo {
         const source = await todo.find({}).sort({ created: -1})
             .lean();
 
-        const data = source.map((item) => this._formatTodo(item));
+        return source.map((item) => this._formatTodo(item));
+    }
 
-        return data;
+    async create() {
+        //{ message: 'Текст нашей задачи' }
+        const source = await todo.create(this.data);
+        return this._formatTodo(source);
     }
 }
