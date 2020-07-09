@@ -23,7 +23,9 @@ export const create = async (req, res) => {
         const todo = new Todo(req.body);
         const data = await todo.create();
 
-        res.status(201).json({data});
+        // 200 - SUCCESS
+        // 201 -CREATED
+        res.status(200).json({data});
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -31,11 +33,11 @@ export const create = async (req, res) => {
 
 export const remove = async (req, res) => {
     try {
-        const {id} = req.body;
+        const {id} = req.params;
         const todo = new Todo();
         const data = await todo.remove(id);
 
-        res.status(200).json({data});
+        res.status(200).json({ data });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
