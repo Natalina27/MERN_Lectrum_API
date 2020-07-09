@@ -32,4 +32,15 @@ export class Todo {
         const source = await todo.create(this.data);
         return this._formatTodo(source);
     }
+
+    async remove(id){
+        //findByIdAndRemove - возвращает сущность по ее id
+        //если данные не были найдены возвращает null
+        const source = await todo.findByIdAndRemove(id).lean();
+        if(!source){
+            throw new Error(`todo with id ${id} not found`);
+        }
+
+        return `todo with id ${id} deleted`;
+    }
 }

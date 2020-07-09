@@ -12,8 +12,12 @@ export class Todo {
     }
 
     async create(){
-
         return await this.models.todo.create();
-
     }
+
+    async remove(id){
+        return await this.models.todo.remove(id);
+    }
+
+
 }
