@@ -28,3 +28,15 @@ export const create = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+
+export const remove = async (req, res) => {
+    try {
+        const {id} = req.body;
+        const todo = new Todo();
+        const data = await todo.remove(id);
+
+        res.status(200).json({data});
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
