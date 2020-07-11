@@ -19,5 +19,9 @@ export class Todo {
         return await this.models.todo.remove(id);
     }
 
+    async update(id){
+        return await this.models.todo.update(id);
+    }
+
 
 }
