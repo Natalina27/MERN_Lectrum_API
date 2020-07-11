@@ -43,4 +43,27 @@ export class Todo {
 
         return `todo with id ${id} deleted`;
     }
+
+    async update(id){
+        const update = {};
+        const {message, favorite, completed} = this.data;
+
+        if(message){
+            update.message = message;
+        }
+        if(favorite){
+            update.favorite = favorite;
+        }
+        if(completed){
+            update.completed = completed;
+        }
+
+        const source = await todo.findByIdAndUpdate(id, update, { new: true}).lean();
+
+        if(!source){
+            throw new Error(`todo with id ${id} not found`);
+        }
+
+        return this._formatTodo(source);
+    }
 }
